@@ -34,7 +34,7 @@ export class DotnetCdkStack extends cdk.Stack {
     /**
      * Create Hosted zone, Domain & Cert
      */
-    const domain = process.env.DOMAIN_NAME || "tandm";
+    const domain = process.env.DOMAIN_NAME || "fitmavincent";
     const subDomain = process.env.SUB_DOMAIN || "dotnet";
     
     const zone = new route53.PublicHostedZone(this, domain + 'HostedZone', {
