@@ -36,9 +36,9 @@ export class DotnetCdkStack extends cdk.Stack {
      */
     const domain = process.env.DOMAIN_NAME || "fitmavincent";
     const subDomain = process.env.SUB_DOMAIN || "dotnet";
-    
-    const zone = new route53.PublicHostedZone(this, domain + 'HostedZone', {
-      zoneName: '' + domain
+
+    const zone = route53.HostedZone.fromLookup(this, domain + 'HostedZone', {
+      domainName: domain
     })
 
     const apiDomain = `${subDomain}.${domain}`;
