@@ -13,7 +13,7 @@ export class SpaCdkStack extends cdk.Stack {
     /**
      * Create S3 bucket for SPA 
      */    
-    const s3WebsiteBucketName = this.node.tryGetContext("spa_bucket_name");    
+    const s3WebsiteBucketName = process.env.SPA_BUCKET_NAME || 'single-page-app';
 
     const websiteBucket = new s3.Bucket(this, "WebsiteBucket", {
       bucketName: s3WebsiteBucketName,

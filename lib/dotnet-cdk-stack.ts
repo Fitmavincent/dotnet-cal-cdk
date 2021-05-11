@@ -22,8 +22,8 @@ export class DotnetCdkStack extends cdk.Stack {
     /**
      * Create S3 bucket for file storage
      */
-    const dotnetStorageBucketName = this.node.tryGetContext("dotnet_bucket_name");
-    const isDevelopment: boolean = this.node.tryGetContext("stack_environment") === "test";
+    const dotnetStorageBucketName = process.env.DOTNET_BUCKET_NAME || 'dotnetcal'
+    const isDevelopment: boolean = process.env.STACK_ENVIRONMENT === "test" || false;
     
     new s3.Bucket(this, "DotnetBucket", {
       bucketName: dotnetStorageBucketName,
@@ -69,8 +69,8 @@ export class DotnetCdkStack extends cdk.Stack {
     /**
      * Create ALB & Fargate for hosting dotnet core server
      */
-    const imageRegistry = this.node.tryGetContext("dotnet_image_registry");    
-    const fargateContainerName = this.node.tryGetContext("dotnet_container_name");
+    const imageRegistry = process.env.DOTNET_IMAGE_REGISTRY || 'public/image_registry';
+    const fargateContainerName = process.env.DOTNET_CONTAINER_NAME || 'fargate';
 
     const dotnetFargate = new ecs_patterns.ApplicationLoadBalancedFargateService(this, "DotnetFargate", {
       cluster: dotnetCluster, // Required
