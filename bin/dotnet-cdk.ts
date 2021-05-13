@@ -2,7 +2,7 @@
 import 'source-map-support/register';
 import * as cdk from '@aws-cdk/core';
 import { DotnetCdkStack } from '../lib/dotnet-cdk-stack';
-import { SpaCdkStack } from '../lib/spa-sdk-stack';
+import { SpaCdkStack } from '../lib/spa-cdk-stack';
 import { TestStack } from '../lib/test-stack';
 import { InfrastructureCdkStack } from '../lib/infrastructure-stack';
 
