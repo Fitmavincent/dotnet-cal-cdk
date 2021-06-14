@@ -166,6 +166,43 @@ export class TestStack extends cdk.Stack {
     //   value: zone.hostedZoneNameServers?.toString() || 'No NameServer'
     // });
 
+          // Prepare Migration task run role
+      /**
+       * Role used by the AwsCustomResource to apply to the Lambda function that executes
+       * on the events.
+       */
+      //  const taskRunRole = new Role(this, `${config.projectName}TaskLambdaRole`, {
+      //   assumedBy: new ServicePrincipal(ServicePrincipals.LAMBDA),
+      //   description:
+      //     'Role used by the AwsCustomResource to apply to the Lambda function that executes on the events.',
+      //   managedPolicies: [
+      //     ManagedPolicy.fromAwsManagedPolicyName(ManagedPolicies.AWS_LAMBDA_BASIC_EXECUTION_ROLE),
+      //     ManagedPolicy.fromAwsManagedPolicyName(ManagedPolicies.AWS_LAMBDA_VPC_ACCESS_EXECUTION_ROLE),
+      //   ],
+      //   inlinePolicies: {
+      //     runTask: new PolicyDocument({
+      //       statements: [
+      //         new PolicyStatement({
+      //           actions: ['iam:PassRole'],
+      //           resources: [migrationTask.executionRole?.roleArn || '', migrationTask.taskRole?.roleArn],
+      //         }),
+
+      //         new PolicyStatement({
+      //           actions: ['ecs:RunTask'],
+      //           resources: [migrationTask.taskDefinitionArn],
+      //           // further limits access to a specific cluster only
+      //           conditions: {
+      //             ArnEquals: {
+      //               'ecs:cluster': cluster.clusterArn,
+      //             },
+      //           },
+      //         }),
+      //       ],
+      //     }),
+      //   },
+      // })
+
+
     // const callParam:any = {
     //   launchType: 'FARGATE',
     //   count: 1,
